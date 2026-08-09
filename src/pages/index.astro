@@ -1,17 +1,241 @@
 ---
-
+const navItems = [
+  { name: "Problems", href: "/problems" },
+  { name: "Resources", href: "/resources" },
+  { name: "Rules", href: "/rules" },
+  { name: "Leaderboard", href: "/leaderboard" },
+  { name: "FAQ", href: "/faq" },
+  { name: "About", href: "/about" },
+];
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>RTL Design Challenge</title>
+  </head>
+
+  <body>
+    <nav>
+      <div class="logo">RTL DESIGN CHALLENGE</div>
+
+      <div class="links">
+        {navItems.map((item) => (
+          <a href={item.href}>{item.name}</a>
+        ))}
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <p class="tag">RTL • FPGA • DIGITAL DESIGN</p>
+
+        <h1>
+          RTL Design<br />
+          Challenge
+        </h1>
+
+        <p class="description">
+          Design. Simulate. Synthesize. Compete.
+        </p>
+
+        <div class="buttons">
+          <a class="primary" href="/problems">Explore Problems</a>
+          <a class="secondary" href="/rules">How It Works</a>
+        </div>
+      </section>
+
+      <section class="about">
+        <h2>What is this?</h2>
+        <p>
+          A hands-on digital design competition where participants solve
+          progressively challenging RTL problems and implement their designs
+          using simulation and FPGA hardware.
+        </p>
+      </section>
+
+      <section class="steps">
+        <div>
+          <span>01</span>
+          <h3>Learn</h3>
+          <p>Study the provided resources.</p>
+        </div>
+
+        <div>
+          <span>02</span>
+          <h3>Design</h3>
+          <p>Write and verify your RTL.</p>
+        </div>
+
+        <div>
+          <span>03</span>
+          <h3>Compete</h3>
+          <p>Submit your design and climb the leaderboard.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      RTL Design Challenge · 2026
+    </footer>
+  </body>
 </html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(body) {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0f19;
+    color: #f5f7fa;
+  }
+
+  nav {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    border-bottom: 1px solid #252b38;
+  }
+
+  .logo {
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .links {
+    display: flex;
+    gap: 25px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .links a {
+    color: #aeb6c5;
+    font-size: 14px;
+  }
+
+  .links a:hover {
+    color: white;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: auto;
+  }
+
+  .hero {
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 30px;
+  }
+
+  .tag {
+    color: #5da9ff;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
+
+  h1 {
+    font-size: clamp(60px, 10vw, 110px);
+    line-height: 0.95;
+    margin: 20px 0;
+    letter-spacing: -5px;
+  }
+
+  .description {
+    font-size: 22px;
+    color: #aeb6c5;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+  }
+
+  .buttons a {
+    padding: 14px 22px;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+
+  .primary {
+    background: #5da9ff;
+    color: #07101d;
+  }
+
+  .secondary {
+    border: 1px solid #3a4353;
+  }
+
+  .about {
+    padding: 80px 30px;
+    border-top: 1px solid #252b38;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
+
+  .about p {
+    max-width: 700px;
+    color: #aeb6c5;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 30px;
+  }
+
+  .steps div {
+    padding: 30px;
+    border: 1px solid #252b38;
+    border-radius: 10px;
+  }
+
+  .steps span {
+    color: #5da9ff;
+  }
+
+  .steps p {
+    color: #aeb6c5;
+  }
+
+  footer {
+    margin-top: 100px;
+    padding: 30px 7%;
+    border-top: 1px solid #252b38;
+    color: #707989;
+    text-align: center;
+  }
+
+  @media (max-width: 800px) {
+    nav {
+      padding: 0 20px;
+    }
+
+    .links {
+      display: none;
+    }
+
+    .steps {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
